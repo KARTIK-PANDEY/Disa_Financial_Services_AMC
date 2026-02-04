@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+  /* Brand Colors */
+  --brand-primary: #0d1b2a;
+  --brand-secondary: #1b263b;
+  --brand-accent: #c9a227;
+
+  /* Theme Variables - Light Mode (Default) */
+  --bg-main: #ffffff;
+  --bg-secondary: #f3f4f6;
+  /* Lighter grey for better contrast */
+  --bg-surface: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.95);
+  /* Less transparent */
+  --bg-navbar: rgba(255, 255, 255, 0.95);
+
+  --text-main: #111827;
+  /* Rich Black */
+  --text-secondary: #4b5563;
+  /* Gray 600 */
+  --text-inverse: #f9fafb;
+
+  --border-color: #e5e7eb;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+
+  /* Functional Colors */
+  --highlight-color: #d97706;
+  /* Darker Gold for visibility on Light */
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 var(--shadow-color);
+  --shadow-md: 0 4px 6px -1px var(--shadow-color);
+  --shadow-lg: 0 10px 15px -3px var(--shadow-color);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme='dark'] {
+  /* Theme Variables - Dark Mode - High Contrast */
+  --bg-main: #020617;
+  /* Slate 950 - Deepest Dark */
+  --bg-secondary: #0f172a;
+  /* Slate 900 */
+  --bg-surface: #1e293b;
+  /* Slate 800 - Distinct Surface */
+  --bg-glass: rgba(15, 23, 42, 0.95);
+  --bg-navbar: rgba(2, 6, 23, 0.95);
+  /* Deep dark navbar */
+
+  --text-main: #f8fafc;
+  /* Slate 50 - Near White */
+  --text-secondary: #cbd5e1;
+  /* Slate 300 - readable light grey */
+  --text-inverse: #020617;
+
+  --border-color: #334155;
+  /* Slate 700 */
+  --shadow-color: rgba(0, 0, 0, 0.5);
+
+  /* Functional Colors */
+  --highlight-color: #fbbf24;
+  /* Brighter Amber/Gold for Dark Mode */
+
+  --brand-primary: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Playfair Display', serif;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--transition-base);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+  transition: all var(--transition-base);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-sm);
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-main);
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--highlight-color);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.btn {
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--highlight-color), #bfa12f);
+  color: #0d1b2a;
+  /* Always dark text on gold button */
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(201, 162, 39, 0.4);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--highlight-color);
+  color: var(--highlight-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--highlight-color);
+  color: #0d1b2a;
+}

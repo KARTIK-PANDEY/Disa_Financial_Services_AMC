@@ -1,0 +1,116 @@
+/* src/components/Hero.css */
+.hero {
+    height: 90vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--text-inverse);
+    /* Always light text on dark overlay */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient using brand colors */
+    background: linear-gradient(to right,
+            rgba(13, 27, 42, 0.95) 0%,
+            rgba(13, 27, 42, 0.7) 50%,
+            rgba(13, 27, 42, 0.3) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    color: var(--text-inverse);
+    animation: fadeInUp 1s ease-out;
+}
+
+.text-highlight {
+    color: var(--highlight-color);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    color: #e0e0e0;
+    /* Explicit light gray for readability */
+    animation: fadeInUp 1s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 1.5rem;
+    animation: fadeInUp 1s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+.hero-btns .btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.hero-btns .btn-outline {
+    border-color: var(--text-inverse);
+    color: var(--text-inverse);
+}
+
+.hero-btns .btn-outline:hover {
+    background-color: var(--text-inverse);
+    color: var(--brand-primary);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero {
+        height: auto;
+        padding: 6rem 0;
+        background-position: right center;
+    }
+
+    .hero-overlay {
+        background: rgba(13, 27, 42, 0.85);
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-btns .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

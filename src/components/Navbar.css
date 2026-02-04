@@ -1,0 +1,201 @@
+/* Navbar.css */
+.navbar {
+    background: var(--bg-navbar);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.menu-icon {
+    display: none;
+    color: var(--text-main);
+}
+
+.logo {
+    color: var(--text-main);
+    justify-self: start;
+    cursor: pointer;
+    font-size: 1.5rem;
+    /* Adjusted for better proportion */
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    display: flex;
+    /* Key for alignment */
+    align-items: center;
+    /* Key for alignment */
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.logo-icon-svg {
+    color: var(--highlight-color);
+}
+
+.logo-text {
+    color: var(--text-main);
+    /* logo-highlight removed in JSX, assuming logo-text handles color or inherits */
+}
+
+/* If you want part of the text highlighted, you can add span back in JSX or stick to single color. 
+   The User didn't ask to remove highlight, but asked for alignment. 
+   in JSX I put: <span className="logo-text">Disa Financial Services...</span>
+   The original had a highlight span. I'll stick to a clean look or re-add highlight if requested. 
+   Actually, the user said "Make Everythig in Perfect Line Allignment". 
+   I will ensure text is aligned.
+*/
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+    gap: 2rem;
+    /* Consistent spacing */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    height: 80px;
+    /* Match navbar height minus borders roughly? Navbar is 85px. */
+    display: flex;
+    /* Center content vertically */
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 0.5rem;
+    height: 100%;
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+    letter-spacing: 0.5px;
+    gap: 0.5rem;
+    /* Space between icon and text */
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 25px;
+    /* Adjust based on height */
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 100%;
+    height: 2px;
+    background-color: var(--highlight-color);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.nav-link:hover {
+    color: var(--highlight-color);
+}
+
+/* Login Button Specifics */
+.login-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    /* Styles come from btn-primary global class usually, but ensure alignment */
+}
+
+/* Ensure global btn-primary doesn't break flex alignment */
+
+.theme-toggle {
+    background: transparent;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.theme-toggle:hover {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
+@media screen and (max-width: 960px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        opacity: 0;
+        transition: all 0.5s ease;
+        background: var(--bg-surface);
+        padding: 2rem 0;
+        box-shadow: var(--shadow-md);
+        border-bottom: 2px solid var(--highlight-color);
+    }
+
+    .nav-menu.active {
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+
+    .nav-link {
+        text-align: center;
+        padding: 1.5rem;
+        width: 100%;
+        display: table;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .nav-item {
+        height: auto;
+    }
+
+    .menu-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+}
