@@ -1,6 +1,7 @@
 // src/components/Footer.jsx
 import React from 'react';
 import './Footer.css';
+import qrCode from '../assets/Disa_Financial_Services_QR.png';
 
 const Footer = () => {
     return (
@@ -37,6 +38,10 @@ const Footer = () => {
                             <li><a href="#">Disclaimer</a></li>
                             <li><a href="#">AMFI Registration</a></li>
                         </ul>
+                    </div>
+                    <div className="footer-col">
+                        <h4>Scan for Details</h4>
+                        <img src={qrCode} alt="Scan for Details" className="footer-qr" />
                     </div>
                 </div>
                 <div className="footer-bottom">

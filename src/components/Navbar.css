@@ -50,6 +50,13 @@
     color: var(--highlight-color);
 }
 
+.logo-icon {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
 .logo-text {
     color: var(--text-main);
     /* logo-highlight removed in JSX, assuming logo-text handles color or inherits */

@@ -4,10 +4,10 @@ import './Team.css';
 
 const teamMembers = [
     {
-        name: "Rajesh Kumar",
+        name: "Sanjiv Rathi",
         position: "Chief Executive Officer",
         role: "CEO",
-        description: "With over 20 years of experience in financial services, Rajesh leads our strategic vision and growth initiatives.",
+        description: "With over 20 years of experience in financial services, Sanjiv leads our strategic vision and growth initiatives.",
         image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
         linkedin: "#",
         email: "rajesh.kumar@disafinancial.com",

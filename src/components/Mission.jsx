@@ -13,7 +13,7 @@ const Mission = () => {
                     </div>
                     <h2 className="section-title">Our Mission</h2>
                     <p className="mission-statement">
-                        Empowering individuals and businesses to achieve financial freedom through
+                        Empowering individuals and businesses to Achieve financial freedom through
                         expert guidance, innovative investment solutions, and unwavering commitment
                         to your success.
                     </p>
@@ -30,7 +30,7 @@ const Mission = () => {
                             <h3 className="mission-card-title">Our Vision</h3>
                         </div>
                         <p className="mission-card-content">
-                            To be India's most trusted financial services partner, recognized for
+                            To be India's most Trusted financial services partner, recognized for
                             transforming lives through smart investment strategies and personalized
                             wealth management solutions.
                         </p>
@@ -66,8 +66,8 @@ const Mission = () => {
                             <h3 className="mission-card-title">Our Values</h3>
                         </div>
                         <p className="mission-card-content">
-                            Integrity, transparency, and excellence drive everything we do. We believe
-                            in building lasting relationships based on trust, ethical practices, and
+                            Integrity, Transparency, and Excellence drive everything we do. We believe
+                            in building lasting relationships based on Trust, ethical practices, and
                             delivering exceptional value to our clients.
                         </p>
                         <div className="mission-card-footer">

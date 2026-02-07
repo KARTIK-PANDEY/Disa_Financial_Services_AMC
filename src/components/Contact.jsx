@@ -56,14 +56,14 @@ const Contact = () => {
                             <i className="fas fa-phone" style={{ fontStyle: 'normal' }}>📞</i>
                             <div>
                                 <h4>Call Us</h4>
-                                <p>+91 98765 43210</p>
+                                <p>+91 9893634067</p>
                             </div>
                         </div>
                         <div className="info-item">
                             <i className="fas fa-envelope" style={{ fontStyle: 'normal' }}>✉️</i>
                             <div>
                                 <h4>Email Us</h4>
-                                <p>kartik0pandey00@gmail.com</p>
+                                <p>disaone@gmail.com</p>
                             </div>
                         </div>
                     </div>

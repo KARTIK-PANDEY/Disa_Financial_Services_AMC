@@ -3,6 +3,7 @@ import { Menu, X, Home, Info, Briefcase, Calculator, Mail, LogIn, Sun, Moon, Tre
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
+import DisaLogo from '../assets/Disa_Financial.jpeg';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -84,7 +85,7 @@ const Navbar = () => {
             <div className="container navbar-container">
                 {/* Premium Logo */}
                 <a href="#home" className="logo" onClick={(e) => handleNavigation(e, '#home')}>
-                    <TrendingUp size={28} className="logo-icon-svg" />
+                    <img src={DisaLogo} alt="Disa Financial Services" className="logo-icon" />
                     <span className="logo-text">
                         Disa Financial Services Pvt. Ltd.
                     </span>
