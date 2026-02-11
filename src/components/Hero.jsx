@@ -9,7 +9,7 @@ const Hero = () => {
             <div className="hero-overlay"></div>
             <div className="container hero-content">
                 <h1 className="hero-title">
-                    Empowering Your <br />
+                    <span className="text-highlight">Empowering Your</span> <br />
                     <span className="text-highlight">Financial Future</span>
                 </h1>
                 <p className="hero-subtitle">
@@ -25,3 +25,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

@@ -1,0 +1,243 @@
+/* FinancialCalculators.css */
+.calculators-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--bg-surface);
+}
+
+.calculators-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--bg-secondary);
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+/* Tabs Navigation */
+.calculator-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 1.2rem 1rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn:hover {
+    background: rgba(0, 0, 0, 0.03);
+    color: var(--highlight-color);
+}
+
+.tab-btn.active {
+    color: var(--highlight-color);
+    background: var(--bg-secondary);
+    border-bottom-color: var(--highlight-color);
+}
+
+/* Calculator Body */
+.calculator-body {
+    padding: 2rem 3rem;
+}
+
+.calculator-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: space-between;
+}
+
+.calculator-inputs,
+.calculator-results {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Input Styles */
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.input-header label {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.input-header .input-value {
+    color: var(--highlight-color);
+    font-weight: 700;
+    font-size: 1.1rem;
+    background: rgba(var(--highlight-rgb), 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+}
+
+.range-slider {
+    width: 100%;
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 3px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--highlight-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.range-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+/* Results Styles */
+.results-card {
+    background: var(--bg-main);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.chart-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(var(--highlight-color) 0% 70%, var(--border-color) 70% 100%);
+    margin: 0 auto 2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-placeholder::after {
+    content: '';
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background: var(--bg-main);
+    border-radius: 50%;
+}
+
+/* New Legend Styles */
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.result-row strong {
+    color: var(--text-main);
+}
+
+.result-total {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.result-total span {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-total h3 {
+    color: var(--highlight-color);
+    font-size: 2rem;
+    margin: 0;
+}
+
+.note {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.calculator-wrapper {
+    animation: slideUp 0.4s ease-out;
+}
+
+@media (max-width: 768px) {
+    .calculator-body {
+        padding: 1.5rem;
+    }
+
+    .calculator-wrapper {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        flex: 1 0 50%;
+        font-size: 0.9rem;
+    }
+}
