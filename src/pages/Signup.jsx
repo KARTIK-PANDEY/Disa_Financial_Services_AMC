@@ -3,6 +3,7 @@ import { authService } from '../services/api';
 import { Mail, Lock, User, TrendingUp, ArrowRight, Eye, EyeOff, Phone, X, Smartphone, CreditCard } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Signup.css';
+import DisaLogo from '../assets/Disa_Financial.jpeg';
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -145,7 +146,7 @@ const Signup = () => {
             <div className="signup-card">
                 <div className="signup-header">
                     <div className="signup-logo">
-                        <TrendingUp size={32} />
+                        <img src={DisaLogo} alt="Disa Financial Services" style={{ height: '50px', width: 'auto', borderRadius: '4px' }} />
                         <span style={{ fontSize: '1.2rem', fontWeight: 700 }}>Disa Financial Services Pvt. Ltd.</span>
                     </div>
                     <h2 className="signup-title">Create Account</h2>

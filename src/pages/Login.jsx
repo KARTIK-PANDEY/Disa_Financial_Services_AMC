@@ -4,6 +4,7 @@ import { Mail, Lock, User, TrendingUp, ArrowRight, Eye, EyeOff, X, Smartphone, C
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Login.css';
+import DisaLogo from '../assets/Disa_Financial.jpeg';
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -172,7 +173,7 @@ const Login = () => {
             <div className="login-card">
                 <div className="login-header">
                     <div className="login-logo">
-                        <TrendingUp size={32} />
+                        <img src={DisaLogo} alt="Disa Financial Services" style={{ height: '50px', width: 'auto', borderRadius: '4px' }} />
                         <span style={{ fontSize: '1.2rem', fontWeight: 700 }}>Disa Financial Services Pvt. Ltd.</span>
                     </div>
                     <h2 className="login-title">Welcome Back</h2>
