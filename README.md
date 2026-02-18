@@ -116,8 +116,11 @@ This project is proprietary and developed for **Disa Financial Services Pvt. Ltd
 For any inquiries or support relative to this codebase:
 
 **Disa Financial Services Pvt. Ltd.**
-*   **Email:** [Add Email Here]
+*   **Email:** [disaone@gmail.com]
 *   **Website:** [Add Website URL Here]
+
+## Developed By:- 
+  **KARTIK PANDEY** 
 
 ---
 *Built with ❤️ for a smarter financial future.*
