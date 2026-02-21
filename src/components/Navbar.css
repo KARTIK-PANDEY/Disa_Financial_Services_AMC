@@ -3,7 +3,7 @@
     background: var(--bg-navbar);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    height: 85px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,7 +51,7 @@
 }
 
 .logo-icon {
-    height: 70px;
+    height: 90px;
     width: auto;
     object-fit: contain;
     border-radius: 4px;
@@ -59,7 +59,9 @@
 
 .logo-text {
     color: var(--text-main);
-    /* logo-highlight removed in JSX, assuming logo-text handles color or inherits */
+    font-size: 1rem;
+    line-height: 1.2;
+    letter-spacing: -0.2px;
 }
 
 /* If you want part of the text highlighted, you can add span back in JSX or stick to single color. 
@@ -82,7 +84,7 @@
 }
 
 .nav-item {
-    height: 80px;
+    height: 100px;
     /* Match navbar height minus borders roughly? Navbar is 85px. */
     display: flex;
     /* Center content vertically */
@@ -164,7 +166,7 @@
         width: 100%;
         height: auto;
         position: absolute;
-        top: 80px;
+        top: 100px;
         left: -100%;
         opacity: 0;
         transition: all 0.5s ease;
@@ -204,5 +206,25 @@
         transform: translate(-100%, 60%);
         font-size: 1.8rem;
         cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo-text {
+        font-size: 0.85rem;
+        max-width: 180px;
+        line-height: 1.1;
+    }
+
+    .logo-icon {
+        height: 65px;
+    }
+
+    .navbar {
+        height: 80px;
+    }
+
+    .nav-menu {
+        top: 80px;
     }
 }

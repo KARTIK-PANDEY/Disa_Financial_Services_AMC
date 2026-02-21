@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './FinancialCalculators.css';
+import { investmentService } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 const FinancialCalculators = () => {
     const [activeTab, setActiveTab] = useState('sip');
@@ -35,6 +37,12 @@ const FinancialCalculators = () => {
     // Results State
     const [result, setResult] = useState({ invested: 0, returns: 0, total: 0 });
     const [monthlyRequired, setMonthlyRequired] = useState(0);
+
+    // Modal State
+    const [showModal, setShowModal] = useState(false);
+    const [userData, setUserData] = useState({ name: '', email: '', phone: '' });
+    const [submitStatus, setSubmitStatus] = useState('');
+    const { user } = useAuth();
 
     // Calculation Logic
     useEffect(() => {
@@ -146,6 +154,67 @@ const FinancialCalculators = () => {
         }
     };
 
+    const handleStartInvesting = (e) => {
+        if (e) e.preventDefault();
+        setShowModal(true);
+        setSubmitStatus('');
+    };
+
+    const handleModalClose = () => {
+        setShowModal(false);
+    };
+
+    const handleInputChange = (e) => {
+        setUserData({
+            ...userData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmitInterest = async (e) => {
+        e.preventDefault();
+        setSubmitStatus('loading');
+
+        try {
+            const currentTabName = {
+                sip: 'SIP',
+                lumpsum: 'Lumpsum',
+                goal: 'Goal Planning',
+                stepup: 'Step-Up SIP',
+                swp: 'SWP'
+            }[activeTab];
+
+            const payload = {
+                userId: user ? user.id : null,
+                type: `${currentTabName} Interest`,
+                amount: activeTab === 'sip' ? sipAmount : (activeTab === 'lumpsum' ? lumpsumAmount : (activeTab === 'goal' ? goalAmount : (activeTab === 'swp' ? swpAmount : stepUpAmount))),
+                details: {
+                    name: userData.name,
+                    email: userData.email,
+                    phone: userData.phone,
+                    tab: activeTab,
+                    inputs: activeTab === 'sip' ? { amount: sipAmount, rate: sipRate, years: sipYears } :
+                        activeTab === 'lumpsum' ? { amount: lumpsumAmount, rate: lumpsumRate, years: lumpsumYears } :
+                            activeTab === 'goal' ? { amount: goalAmount, rate: goalRate, years: goalYears, monthlyRequired } :
+                                activeTab === 'stepup' ? { amount: stepUpAmount, rate: stepUpRate, years: stepUpYears, increase: stepUpInc } :
+                                    { amount: swpAmount, withdrawal: swpWithdrawal, rate: swpRate, years: swpYears },
+                    results: result
+                }
+            };
+
+            await investmentService.createInvestment(payload);
+            setSubmitStatus('success');
+            setTimeout(() => {
+                setShowModal(false);
+                setUserData({ name: '', email: '', phone: '' });
+                setSubmitStatus('');
+            }, 2500);
+        } catch (error) {
+            console.error("Investment request failed", error);
+            setSubmitStatus('error');
+        }
+    };
+
     const formatCurrency = (amount) => {
         return new Intl.NumberFormat('en-IN', {
             style: 'currency',
@@ -230,6 +299,7 @@ const FinancialCalculators = () => {
                                             className="range-slider"
                                         />
                                     </div>
+                                    <button onClick={handleStartInvesting} className="btn btn-primary invest-now-btn">Start Investing Now</button>
                                 </div>
                                 <ResultCard result={result} label="Total Corpus" />
                             </div>
@@ -272,6 +342,7 @@ const FinancialCalculators = () => {
                                             className="range-slider"
                                         />
                                     </div>
+                                    <button onClick={handleStartInvesting} className="btn btn-primary invest-now-btn">Start Investing Now</button>
                                 </div>
                                 <ResultCard result={result} label="Total Corpus" />
                             </div>
@@ -314,6 +385,7 @@ const FinancialCalculators = () => {
                                             className="range-slider"
                                         />
                                     </div>
+                                    <button onClick={handleStartInvesting} className="btn btn-primary invest-now-btn">Start Investing Now</button>
                                 </div>
                                 <div className="calculator-results">
                                     <div className="results-card">
@@ -379,6 +451,7 @@ const FinancialCalculators = () => {
                                             className="range-slider"
                                         />
                                     </div>
+                                    <button onClick={handleStartInvesting} className="btn btn-primary invest-now-btn">Start Investing Now</button>
                                 </div>
                                 <ResultCard result={result} label="Total Corpus" />
                             </div>
@@ -432,6 +505,7 @@ const FinancialCalculators = () => {
                                             className="range-slider"
                                         />
                                     </div>
+                                    <button onClick={handleStartInvesting} className="btn btn-primary invest-now-btn">Start Investing Now</button>
                                 </div>
 
                                 {/* Custom Result for SWP */}
@@ -463,7 +537,67 @@ const FinancialCalculators = () => {
                     </div>
                 </div>
             </div>
-        </section>
+
+            {/* Interest Modal */}
+            {
+                showModal && (
+                    <div className="modal-overlay">
+                        <div className="modal-content">
+                            <button className="modal-close" onClick={handleModalClose}>&times;</button>
+                            <h3>Start Your Journey</h3>
+                            <p>We've saved your calculation. Fill in your details so our expert can guide you.</p>
+
+                            <div className="summary-box">
+                                <small>Based on your current plan:</small>
+                                <strong>
+                                    {activeTab === 'goal' ? `₹ ${monthlyRequired.toLocaleString()}/month` :
+                                        `₹ ${(activeTab === 'sip' ? sipAmount : (activeTab === 'lumpsum' ? lumpsumAmount : (activeTab === 'swp' ? swpAmount : stepUpAmount))).toLocaleString()}`}
+                                    {activeTab !== 'lumpsum' && activeTab !== 'swp' ? '/month' : ''}
+                                </strong>
+                            </div>
+
+                            {submitStatus === 'success' ? (
+                                <div className="success-message">
+                                    ✅ Request Received! We will contact you shortly.
+                                </div>
+                            ) : (
+                                <form onSubmit={handleSubmitInterest}>
+                                    <div className="form-group">
+                                        <input
+                                            type="text" name="name" placeholder="Your Name" required
+                                            value={userData.name} onChange={handleInputChange}
+                                            className="modal-input"
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="email" name="email" placeholder="Email Address" required
+                                            value={userData.email} onChange={handleInputChange}
+                                            className="modal-input"
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="tel" name="phone" placeholder="Phone Number" required
+                                            value={userData.phone} onChange={handleInputChange}
+                                            className="modal-input"
+                                        />
+                                    </div>
+                                    <button type="submit" disabled={submitStatus === 'loading'} className="btn btn-primary btn-full">
+                                        {submitStatus === 'loading' ? 'Submitting...' : 'Submit Request'}
+                                    </button>
+                                    {submitStatus === 'error' && (
+                                        <p className="error-text" style={{ color: 'red', marginTop: '10px', fontSize: '0.8rem' }}>
+                                            Failed to submit. Please try again.
+                                        </p>
+                                    )}
+                                </form>
+                            )}
+                        </div>
+                    </div>
+                )
+            }
+        </section >
     );
 };
 

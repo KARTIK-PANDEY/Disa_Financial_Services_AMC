@@ -87,7 +87,7 @@ const Navbar = () => {
                 <a href="#home" className="logo" onClick={(e) => handleNavigation(e, '#home')}>
                     <img src={DisaLogo} alt="Disa Financial Services" className="logo-icon" />
                     <span className="logo-text">
-                        Disa Financial Services Pvt. Ltd.
+                        Disa Financial <br /> Services Pvt. Ltd.
                     </span>
                 </a>
 

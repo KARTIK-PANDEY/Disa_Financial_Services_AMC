@@ -20,46 +20,36 @@
 
 .contact-info {
     flex: 1;
-    min-width: 300px;
-}
-
-.contact-info h3 {
-    color: var(--text-main);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.contact-info p {
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-}
-
-.info-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-}
-
-.info-item i {
-    font-size: 1.5rem;
-    color: var(--highlight-color);
-    margin-right: 1rem;
-    margin-top: 5px;
-}
-
-.info-item h4 {
-    color: var(--text-main);
-    margin-bottom: 0.25rem;
+    min-width: 280px;
+    /* Reduced from 300px to fit smaller screens */
 }
 
 .contact-form {
     flex: 1;
-    min-width: 300px;
+    min-width: 280px;
+    /* Reduced from 300px */
     background: var(--bg-surface);
     padding: 2.5rem;
     border-radius: 12px;
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .contact-content {
+        gap: 2rem;
+        flex-direction: column;
+    }
+
+    .contact-info,
+    .contact-form {
+        min-width: 100%;
+        padding: 1.5rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
 }
 
 .contact-form input,

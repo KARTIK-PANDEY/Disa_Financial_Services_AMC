@@ -60,6 +60,34 @@
     transform: scale(1.05);
 }
 
+.footer-legal-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem 0;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.risk-disclaimer {
+    margin-bottom: 1.5rem;
+}
+
+.risk-disclaimer p {
+    color: var(--highlight-color);
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+
+.registration-info p {
+    color: #888;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.3px;
+}
+
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 2rem;
