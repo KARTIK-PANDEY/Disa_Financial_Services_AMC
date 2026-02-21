@@ -48,7 +48,7 @@ const teamMembers = [
         position: "Head of Operations",
         role: "Executive Board",
         description: "Ensures operational excellence and compliance across all our financial services and processes.",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+        image: "src/assets/Anita_Ma'am.png",
         linkedin: "#",
         email: "vikram.singh@disafinancial.com",
         achievements: "Operations Management Specialist"
