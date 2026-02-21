@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import AdminDashboard from './pages/AdminDashboard';
+import ChatBot from './components/ChatBot';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
           <Footer />
+          <ChatBot />
         </div>
       </AuthProvider>
     </Router>
