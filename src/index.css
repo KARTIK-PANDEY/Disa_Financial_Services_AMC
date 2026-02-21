@@ -83,8 +83,11 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+  /* Offset for sticky navbar */
 }
 
+/* ... existing body styles ... */
 body {
   font-family: 'Outfit', sans-serif;
   background-color: var(--bg-main);
@@ -92,6 +95,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   transition: background-color var(--transition-smooth), color var(--transition-smooth);
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
 }
 
 h1,
@@ -138,9 +143,9 @@ img {
   font-size: 2.5rem;
   margin-bottom: var(--spacing-sm);
   position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
+  /* Replaced absolute centering with margin auto for better flow */
+  margin-left: auto;
+  margin-right: auto;
   color: var(--text-main);
 }
 
