@@ -153,7 +153,7 @@ This project is proprietary and developed for **Disa Financial Services Pvt. Ltd
 For any inquiries or support relative to this codebase:
 
 **Disa Financial Services Pvt. Ltd.**
-*   **Email:** support@disafinancial.com
+*   **Email:** disaone@gmail.com
 *   **Website:** https://disafinancial.com
 
 ---
