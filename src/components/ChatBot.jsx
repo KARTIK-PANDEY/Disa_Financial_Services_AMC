@@ -22,7 +22,7 @@ const ChatBot = () => {
 
     useEffect(() => {
         if (isOpen && user && !hasGreetedRef.current) {
-            setIsTyping(true);
+            setIsTyping(true); // Start typing animation
             setTimeout(() => {
                 setMessages(prev => [
                     ...prev,
@@ -63,8 +63,8 @@ const ChatBot = () => {
         setInputValue('');
         setIsTyping(true);
 
-        setTimeout(() => {
-            const botResponseText = findAnswer(userMessage.text);
+        const fetchAnswer = async () => {
+            const botResponseText = await findAnswer(userMessage.text);
             const botMessage = {
                 id: Date.now() + 1,
                 text: botResponseText,
@@ -72,7 +72,8 @@ const ChatBot = () => {
             };
             setMessages(prev => [...prev, botMessage]);
             setIsTyping(false);
-        }, 1500);
+        };
+        fetchAnswer();
     };
 
     return (
@@ -133,8 +134,11 @@ const ChatBot = () => {
                 /* Toggle Button with Animation Layers */
                 <button onClick={toggleChat} className="chatbot-toggle-btn" aria-label="Open Chat">
                     <div className="btn-glow"></div>
-                    <Sparkles size={32} />
-                    <Bot size={28} style={{ position: 'absolute', top: '15px', right: '15px', opacity: 0.3 }} />
+                    <div className="chatbot-btn-content">
+                        <Bot size={28} className="chatbot-btn-icon" />
+                        <span className="chatbot-btn-text">ASK DISA</span>
+                    </div>
+                    <Sparkles size={24} className="chatbot-btn-sparkle" />
                 </button>
             )}
         </div>
