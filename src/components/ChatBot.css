@@ -18,9 +18,10 @@
 
 /* Floating Action Button */
 .chatbot-toggle-btn {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
+    width: auto;
+    height: 65px;
+    padding: 0 24px;
+    border-radius: 35px;
     background: linear-gradient(135deg, var(--highlight-color), #b08d23);
     color: white;
     border: none;
@@ -35,8 +36,45 @@
     animation: pulse-glow 3s infinite;
 }
 
-.chatbot-toggle-btn svg {
+.chatbot-btn-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     animation: gentle-bob 3s infinite ease-in-out;
+}
+
+.chatbot-btn-text {
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.chatbot-btn-sparkle {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    color: #ffd700;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+    animation: sparkle-spin 3s linear infinite;
+}
+
+@keyframes sparkle-spin {
+    0% {
+        transform: scale(0.8) rotate(0deg);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.8) rotate(360deg);
+        opacity: 0.6;
+    }
 }
 
 @keyframes pulse-glow {
