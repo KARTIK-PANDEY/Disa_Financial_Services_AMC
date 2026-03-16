@@ -44,24 +44,14 @@ const teamMembers = [
         achievements: "MBA, Customer Excellence Award Winner"
     },
     {
-        name: "Anita ",
-        position: "Manager ",
-        role: "Managerial Board",
-        description: "Ensures operational excellence and compliance across all our financial services and processes.",
+        name: "Anita Sheikh",
+        position: "Senior Wealth Advisor",
+        role: "Wealth Management",
+        description: "With 25+ years in equity broking, she empowers investors to create sustainable wealth and achieve financial freedom through disciplined strategies.",
         image: "src/assets/Anita_Ma'am.png",
         linkedin: "#",
-        email: "vikram.singh@disafinancial.com",
-        achievements: "Operations Management Specialist"
-    },
-    {
-        name: "",
-        position: "Head of Research & Analytics",
-        role: "Managerial Board",
-        description: "Drives data-driven insights and market research to support informed investment decisions.",
-        image: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=400&fit=crop",
-        linkedin: "#",
-        email: "anjali.mehta@disafinancial.com",
-        achievements: "PhD in Economics, Market Analysis Expert"
+        email: "anita.sheikh@disafinancial.com",
+        achievements: "Inter CWA, Post Grad in PMS"
     }
 ];
 
