@@ -47,6 +47,36 @@
     padding-left: 5px;
 }
 
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icon:hover {
+    background: var(--highlight-color);
+    color: #000;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 191, 0, 0.3);
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
 .footer-qr {
     width: 150px;
     height: auto;
