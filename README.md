@@ -146,7 +146,7 @@ Contributions are welcome! Please follow these steps:
 
 ## 📄 License
 
-This project is proprietary and developed for **Disa Financial Services Pvt. Ltd.** for Marking their Digital Presence.
+This project is proprietary and developed for **Disa Financial Services Pvt. Ltd.** for Marking their Digital Presence and AMC Dominance.
 
 ## 📞 Contact
 
