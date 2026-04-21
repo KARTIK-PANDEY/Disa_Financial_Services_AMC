@@ -1,0 +1,79 @@
+/* src/components/Contact.css */
+.contact-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--bg-secondary);
+    color: var(--text-main);
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.contact-section .section-title {
+    color: var(--text-main);
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    margin-top: var(--spacing-md);
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 280px;
+    /* Reduced from 300px to fit smaller screens */
+}
+
+.contact-form {
+    flex: 1;
+    min-width: 280px;
+    /* Reduced from 300px */
+    background: var(--bg-surface);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .contact-content {
+        gap: 2rem;
+        flex-direction: column;
+    }
+
+    .contact-info,
+    .contact-form {
+        min-width: 100%;
+        padding: 1.5rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    background: var(--bg-main);
+    /* Ensure contrast against surface */
+    color: var(--text-main);
+    border-radius: 6px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.2);
+    background: var(--bg-surface);
+}
+
+.contact-form button {
+    width: 100%;
+}

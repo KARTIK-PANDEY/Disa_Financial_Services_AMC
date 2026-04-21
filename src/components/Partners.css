@@ -1,0 +1,108 @@
+/* Partners.css */
+.partners-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--bg-main);
+    position: relative;
+    overflow: hidden;
+}
+
+.partners-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+}
+
+/* Infinite Scrolling Marquee */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    padding: var(--spacing-md) 0;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    gap: 3rem;
+    width: max-content;
+    animation: scroll 60s linear infinite;
+}
+
+.marquee-content:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 1.5rem));
+    }
+}
+
+.partner-card {
+    background: var(--bg-surface);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    /* Pill shape for premium look */
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.partner-card:hover {
+    transform: scale(1.05);
+    border-color: var(--highlight-color);
+    box-shadow: 0 10px 25px rgba(201, 162, 39, 0.1);
+}
+
+.partner-logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.partner-icon {
+    color: var(--highlight-color);
+    flex-shrink: 0;
+}
+
+.partner-logo-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+/* Double the content for seamless looping */
+.marquee-content {
+    will-change: transform;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .partners-section {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .marquee-content {
+        gap: 1.5rem;
+    }
+
+    .partner-card {
+        padding: 0.75rem 1.5rem;
+    }
+}
