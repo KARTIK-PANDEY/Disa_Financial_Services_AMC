@@ -157,6 +157,9 @@ For any inquiries or support relative to this codebase:
 *   **Website:** https://disafinancial.com        (will be Live very Soon)
 
 ---
-**Exclusively project by KARTIK PANDEY**
+
+**Project Exclusively by KARTIK PANDEY**
+
+---
 
 *Built with ❤️ for a smarter financial future.*
