@@ -2,13 +2,20 @@ import React from 'react';
 import { Linkedin, Mail, Award } from 'lucide-react';
 import './Team.css';
 
+// Import images directly so Vite bundles them
+import imgSanjiv from '../assets/Sanjiv Rathi sir Photo.jpeg';
+import imgAlka from '../assets/alka mam.jpg.jpeg';
+import imgLoknath from '../assets/Loknath_Sahu_Sir.png';
+import imgKirti from '../assets/kirti mam.jpg.jpeg';
+import imgAnita from '../assets/Anita_Ma\'am.png';
+
 const teamMembers = [
     {
         name: "Sanjiv Rathi",
         position: "Chief Executive Officer & Founder",
         role: "CEO",
         description: "With over 30 years of experience in financial services, Sanjiv Rathi leads our strategic vision and growth initiatives.",
-        image: "src/assets/Sanjiv Rathi sir Photo.jpeg",
+        image: imgSanjiv,
         linkedin: "https://www.linkedin.com/in/sanjiv-rathi-4335a135/",
         email: "sanjivrathica@yahoo.com",
         achievements: "CA, CS and CMA"
@@ -18,7 +25,7 @@ const teamMembers = [
         position: "Head of Mutual Fund Distribution",
         role: "Head of Mutual Fund Distribution",
         description: "Expert in financial planning and risk management with 15+ years of experience in the investment sector.",
-        image: "src/assets/alka mam.jpg.jpeg",
+        image: imgAlka,
         linkedin: "# ",
         email: "alka.gopawar@disafinancial.com",
         achievements: "Certified Financial Planner, CFA Charterholder",
@@ -30,7 +37,7 @@ const teamMembers = [
         position: "Head of Sales",
         role: "Head of Sales",
         description: "Leads our investment strategies with a proven track record in portfolio management and market analysis.",
-        image: "src/assets/Loknath_Sahu_Sir.png",
+        image: imgLoknath,
         linkedin: "#",
         email: "lok.nath.sahu@disafinancial.com",
         achievements: "CFA, Investment Banking Expert"
@@ -40,7 +47,7 @@ const teamMembers = [
         position: "Head of Finance",
         role: "Head of Finance",
         description: "Passionate about delivering exceptional client experiences and building long-lasting relationships.",
-        image: "src/assets/kirti mam.jpg.jpeg",
+        image: imgKirti,
         linkedin: "#",
         email: "kirti.srivastava@disafinancial.com",
         achievements: "MBA, Customer Excellence Award Winner"
@@ -50,7 +57,7 @@ const teamMembers = [
         position: "Senior Wealth Advisor",
         role: "Wealth Management",
         description: "With 25+ years in equity broking, she empowers investors to create sustainable wealth and achieve financial freedom through disciplined strategies.",
-        image: "src/assets/Anita_Ma'am.png",
+        image: imgAnita,
         linkedin: "#",
         email: "anita.sheikh@disafinancial.com",
         achievements: "Inter CWA, Post Grad in PMS"
