@@ -10,7 +10,7 @@
 
 ## 📖 Overview
 
-**Disa Financial Services Pvt. Ltd. Website** is a modern, high-performance full-stack web application designed to establish a strong digital presence for **Disa Financial Services Pvt. Ltd.**. This platform serves as a comprehensive hub for clients to explore financial services, utilize investment tools, connect with expert advisors, and manage their portfolios.
+**Disa Financial Services Pvt. Ltd. Website** is a modern, high-performance full-stack web application designed to establish a strong digital presence for **Disa Financial Services Pvt. Ltd.**. This platform serves as a comprehensive hub for clients to explore financial services, utilize investment tools, connect with expert advisors, Make Stock and Mutual Fund portfolio and manage their portfolios.
 
 Built with a focus on **speed, aesthetics, and user experience**, this website leverages a **PERN** stack (PostgreSQL, Express, React, Node.js) with **Vite** to deliver a seamless and responsive browsing experience across all devices.
 
@@ -148,13 +148,18 @@ Contributions are welcome! Please follow these steps:
 
 This project is proprietary and developed for **Disa Financial Services Pvt. Ltd.**.
 
-## 📞 Contact
+## 📞 Contact Us
 
 For any inquiries or support relative to this codebase:
 
 **Disa Financial Services Pvt. Ltd.**
 *   **Email:** support@disafinancial.com
-*   **Website:** https://disafinancial.com
+*   **Website:** https://disafinancial.com        (will be Live very Soon)
 
 ---
+
+**Project Exclusively by KARTIK PANDEY**
+
+---
+
 *Built with ❤️ for a smarter financial future.*
