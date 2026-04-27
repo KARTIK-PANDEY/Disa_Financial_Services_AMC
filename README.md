@@ -154,7 +154,7 @@ For any inquiries or support relative to this codebase:
 
 **Disa Financial Services Pvt. Ltd.**
 *   **Email:** support@disafinancial.com
-*   **Website:** https://disafinancial.com        (will be Live very Soon)
+*   **Website:** https://disafinancial.com
 
 ---
 
