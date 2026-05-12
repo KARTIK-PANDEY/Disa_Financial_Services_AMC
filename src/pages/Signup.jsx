@@ -305,7 +305,7 @@ const Signup = () => {
 
                 <p className="login-link">
                     Already have an account?
-                    <Link to="/login">Sign In</Link>
+                    <a href="https://disafinancial.investwell.app/app/#/login" target="_blank" rel="noopener noreferrer">Sign In</a>
                 </p>
             </div>
 
