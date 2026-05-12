@@ -140,15 +140,17 @@ const Navbar = () => {
                                 </button>
                             </div>
                         ) : (
-                            <Link
-                                to="/login"
+                            <a
+                                href="https://disafinancial.investwell.app/app/#/login"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="btn-primary login-button"
                                 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}
                                 onClick={() => setIsOpen(false)}
                             >
                                 <LogIn size={18} />
                                 <span>Client Login</span>
-                            </Link>
+                            </a>
                         )}
                     </li>
 
