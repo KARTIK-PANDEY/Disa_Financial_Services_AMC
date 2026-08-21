@@ -147,12 +147,12 @@ export const findAnswer = async (query) => {
     }
 
     try {
-        const apiKey = "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";
+        const apiKey = "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"; 
 
         // Combine all answers from the knowledge base into a single context string
         const kbContext = knowledgeBase
             .filter(item => item.answer !== specialEntry?.answer)
-            .map(item => `- ${item.answer}`).join('\n');
+            .map(item => `- ${item.answer}`).join('\n'); 
 
         const systemPrompt = `You are Disa Assistant, a highly intelligent and helpful AI assistant for Disa Financial Services, a premier financial consultancy based in Raipur. 
 
