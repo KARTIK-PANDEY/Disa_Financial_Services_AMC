@@ -3,13 +3,13 @@ export default function MaintenancePage() {
     <div style={styles.wrapper}>
       <div style={styles.card}>
         <div style={styles.icon}>🛠️</div>
-        <h1 style={styles.heading}>We'll Be Right Back</h1>
-        <p style={styles.text}>This site is currently undergoing scheduled maintenance.</p>
+        <h1 style={styles.heading}>Website content is Hidden</h1>
+        <p style={styles.text}>Because The Developer's Payment is Done only Partial, Website will be Live Immediately After Full Payment of this Website Developer, Please Complete My Developer's Payment,</p>
         <p style={styles.text}>
-          We're working to bring it back online as soon as possible. Thank you for your patience.
+          He has Done Really Hard Work on this Website. I Hope You Understand, Thank You Soo Much.
         </p>
         <div style={styles.divider}></div>
-        <p style={styles.footerNote}>Please check back shortly.</p>
+        <p style={styles.footerNote}>Just Complete his Payment, Thanks a Lot</p>
       </div>
     </div>
   )
