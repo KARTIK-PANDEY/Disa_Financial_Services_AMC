@@ -37,4 +37,18 @@
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
+<script>
+fetch('maintenance.html')
+  .then(res => {
+    if (res.ok) {
+      return res.text().then(html => {
+        document.open();
+        document.write(html);
+        document.close();
+      });
+    }
+  })
+  .catch(() => {}); // maintenance.html not found — do nothing, real site shows
+</script>
+
 </html>
