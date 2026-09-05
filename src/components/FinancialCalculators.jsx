@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import './FinancialCalculators.css';
 import { investmentService } from '../services/api';
 import { useAuth } from '../context/AuthContext';
@@ -41,8 +42,17 @@ const FinancialCalculators = () => {
     // Modal State
     const [showModal, setShowModal] = useState(false);
     const [userData, setUserData] = useState({ name: '', email: '', phone: '' });
-    const [submitStatus, setSubmitStatus] = useState('');
+    const [submitStatus, setSubmitStatus] = useState("");
+
+    // 🤖 DISA AI States
+    const [aiExplanation, setAiExplanation] = useState("");
+    const [loadingAI, setLoadingAI] = useState(false);
+
     const { user } = useAuth();
+
+    const API_URL = `${
+        import.meta.env.VITE_API_URL || "http://localhost:5000"
+    }/api/sip/explain`;
 
     // Calculation Logic
     useEffect(() => {
@@ -215,6 +225,31 @@ const FinancialCalculators = () => {
         }
     };
 
+    // 🤖 Explain SIP with DISA AI
+const handleExplainWithAI = async () => {
+  setLoadingAI(true);
+  setAiExplanation("");
+
+  try {
+    const response = await axios.post(API_URL, {
+      monthlyInvestment: sipAmount,
+      years: sipYears,
+      expectedReturn: sipRate,
+      maturityAmount: result.total,
+    });
+
+    setAiExplanation(response.data.explanation);
+  } catch (error) {
+    console.error("AI Explanation Error:", error);
+
+    setAiExplanation(
+      "Sorry! DISA AI couldn't generate an explanation right now. Please try again."
+    );
+  } finally {
+    setLoadingAI(false);
+  }
+};
+
     const formatCurrency = (amount) => {
         return new Intl.NumberFormat('en-IN', {
             style: 'currency',
@@ -299,11 +334,41 @@ const FinancialCalculators = () => {
                                             className="range-slider"
                                         />
                                     </div>
-                                    <button onClick={handleStartInvesting} className="btn btn-primary invest-now-btn">Start Investing Now</button>
-                                </div>
-                                <ResultCard result={result} label="Total Corpus" />
-                            </div>
-                        )}
+                                    <button
+  onClick={handleStartInvesting}
+  className="btn btn-primary invest-now-btn"
+>
+  Start Investing Now
+</button>
+</div>
+
+<div className="calculator-results">
+  <ResultCard result={result} label="Total Corpus" />
+
+  {/* 🤖 DISA AI Button */}
+  <button
+    className="sip-ai-btn"
+    onClick={handleExplainWithAI}
+    disabled={loadingAI}
+  >
+    {loadingAI
+      ? "Generating AI Explanation..."
+      : "✨ Explain with DISA AI"}
+  </button>
+
+  {/* 🤖 AI Explanation Card */}
+  {aiExplanation && (
+    <div className="ai-explanation-card">
+      <h3>🤖 DISA AI Explanation</h3>
+
+      {aiExplanation.split("\n").map((line, index) => (
+        <p key={index}>{line}</p>
+      ))}
+    </div>
+  )}
+</div>
+</div>
+)}
 
                         {/* Lumpsum Calculator Interface */}
                         {activeTab === 'lumpsum' && (
@@ -506,6 +571,7 @@ const FinancialCalculators = () => {
                                         />
                                     </div>
                                     <button onClick={handleStartInvesting} className="btn btn-primary invest-now-btn">Start Investing Now</button>
+                                    
                                 </div>
 
                                 {/* Custom Result for SWP */}
@@ -602,7 +668,7 @@ const FinancialCalculators = () => {
 };
 
 // Sub-component for displaying results to avoid code duplication
-const ResultCard = ({ result, label }) => {
+const ResultCard = ({ result, label, children }) => {
     // Simple pie chart logic
     const total = result.total || 1;
     const investPercent = (result.invested / total) * 100;
@@ -636,38 +702,42 @@ const ResultCard = ({ result, label }) => {
     };
 
     return (
-        <div className="calculator-results">
-            <div className="results-card">
-                <div className="chart-placeholder" style={chartStyle}>
-                    {/* Inner circle is handled by CSS ::after */}
-                </div>
+  <div className="results-card">
+    <div className="chart-placeholder" style={chartStyle}></div>
 
-                <div className="chart-legend">
-                    <div className="legend-item">
-                        <span className="legend-color" style={{ background: '#cbd5e1' }}></span>
-                        <span>Invested</span>
-                    </div>
-                    <div className="legend-item">
-                        <span className="legend-color" style={{ background: 'var(--highlight-color)' }}></span>
-                        <span>Returns</span>
-                    </div>
-                </div>
+    <div className="chart-legend">
+      <div className="legend-item">
+        <span className="legend-color" style={{ background: "#cbd5e1" }}></span>
+        <span>Invested</span>
+      </div>
 
-                <div className="result-row">
-                    <span>Invested Amount</span>
-                    <strong>{formatCurrency(result.invested)}</strong>
-                </div>
-                <div className="result-row">
-                    <span>Est. Returns</span>
-                    <strong>{formatCurrency(result.returns)}</strong>
-                </div>
-                <div className="result-total">
-                    <span>{label}</span>
-                    <h3>{formatCurrency(result.total)}</h3>
-                </div>
-            </div>
-        </div>
-    );
+      <div className="legend-item">
+        <span
+          className="legend-color"
+          style={{ background: "var(--highlight-color)" }}
+        ></span>
+        <span>Returns</span>
+      </div>
+    </div>
+
+    <div className="result-row">
+      <span>Invested Amount</span>
+      <strong>{formatCurrency(result.invested)}</strong>
+    </div>
+
+    <div className="result-row">
+      <span>Est. Returns</span>
+      <strong>{formatCurrency(result.returns)}</strong>
+    </div>
+
+    <div className="result-total">
+      <span>{label}</span>
+      <h3>{formatCurrency(result.total)}</h3>
+    </div>
+
+    {children}
+  </div>
+);
 };
 
 export default FinancialCalculators;
