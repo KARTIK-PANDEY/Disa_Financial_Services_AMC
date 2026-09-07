@@ -412,3 +412,56 @@
   line-height: 1.6;
   color: #333;
 }
+
+.growth-chart-card {
+  margin-top: 30px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  width: 100%;
+}
+
+.growth-chart-card h3 {
+  color: #d97706;   /* DISA orange */
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.ai-explanation-card {
+    position: relative;
+}
+
+/* Close Button - DISA Theme */
+.ai-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f59e0b, #d97706); /* DISA Gold */
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.35);
+    transition: all 0.25s ease;
+}
+
+/* Hover Effect */
+.ai-close-btn:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c); /* Red on hover */
+    transform: scale(1.08) rotate(90deg);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.35);
+}
+
+/* Click Effect */
+.ai-close-btn:active {
+    transform: scale(0.95);
+}

@@ -3,6 +3,16 @@ import axios from "axios";
 import "./FinancialCalculators.css";
 import { investmentService } from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
 
 const FinancialCalculators = () => {
   const [activeTab, setActiveTab] = useState("sip");
@@ -47,6 +57,7 @@ const FinancialCalculators = () => {
   // 🤖 DISA AI States
   const [aiExplanation, setAiExplanation] = useState("");
   const [loadingAI, setLoadingAI] = useState(false);
+  const [showAIExplanation, setShowAIExplanation] = useState(false);
 
   const { user } = useAuth();
 
@@ -296,6 +307,7 @@ const FinancialCalculators = () => {
       });
 
       setAiExplanation(response.data.explanation);
+      setShowAIExplanation(true);
     } catch (error) {
       console.error("AI Explanation Error:", error);
 
@@ -306,6 +318,22 @@ const FinancialCalculators = () => {
       setLoadingAI(false);
     }
   };
+  const growthData = Array.from({ length: sipYears }, (_, i) => {
+    const year = i + 1;
+    const monthlyRate = sipRate / 12 / 100;
+    const months = year * 12;
+
+    const corpus =
+      sipAmount *
+      (((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) *
+        (1 + monthlyRate));
+
+    return {
+      year: `Y${year}`,
+      invested: sipAmount * months,
+      corpus: Math.round(corpus),
+    };
+  });
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat("en-IN", {
@@ -411,11 +439,6 @@ const FinancialCalculators = () => {
                   >
                     Start Investing Now
                   </button>
-                </div>
-
-                <div className="calculator-results">
-                  <ResultCard result={result} label="Total Corpus" />
-
                   {/* 🤖 DISA AI Button */}
                   <button
                     className="sip-ai-btn"
@@ -426,21 +449,70 @@ const FinancialCalculators = () => {
                       ? "Generating AI Explanation..."
                       : "✨ Explain with DISA AI"}
                   </button>
+                </div>
 
-                  {/* 🤖 AI Explanation Card */}
-                  {aiExplanation && (
-                    <div className="ai-explanation-card">
-                      <h3>🤖 DISA AI Explanation</h3>
-
-                      {aiExplanation.split("\n").map((line, index) => (
-                        <p key={index}>{line}</p>
-                      ))}
-                    </div>
-                  )}
+                <div className="calculator-results">
+                  <ResultCard result={result} label="Total Corpus"></ResultCard>
                 </div>
               </div>
             )}
+            {/* 🤖 DISA AI Explanation */}
+            {/* 🤖 DISA AI Explanation */}
+            {showAIExplanation && aiExplanation && (
+              <div className="ai-explanation-card">
+                <button
+                  className="ai-close-btn"
+                  onClick={() => setShowAIExplanation(false)}
+                >
+                  ×
+                </button>
 
+                <h3>🤖 DISA AI Investment Insights</h3>
+
+                {aiExplanation
+                  .split("\n")
+                  .map((line, index) =>
+                    line.trim() ? <p key={index}>{line}</p> : null,
+                  )}
+              </div>
+            )}
+            {/* 📈 SIP Growth Chart */}
+            {activeTab === "sip" && (
+              <>
+                {/* 📈 SIP Growth Chart */}
+                <div className="growth-chart-card">
+                  <h3>📈 Investment Growth Over Time</h3>
+
+                  <div style={{ width: "100%", height: 320 }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart data={growthData}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="year" />
+                        <YAxis />
+                        <Tooltip formatter={(value) => formatCurrency(value)} />
+                        <Legend />
+
+                        <Line
+                          type="monotone"
+                          dataKey="invested"
+                          name="Invested Amount"
+                          stroke="#94a3b8"
+                          strokeWidth={3}
+                        />
+
+                        <Line
+                          type="monotone"
+                          dataKey="corpus"
+                          name="Estimated Corpus"
+                          stroke="#d97706"
+                          strokeWidth={3}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+              </>
+            )}
             {/* Lumpsum Calculator Interface */}
             {activeTab === "lumpsum" && (
               <div className="calculator-wrapper">
