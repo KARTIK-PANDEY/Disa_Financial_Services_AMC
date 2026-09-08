@@ -23,7 +23,7 @@
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-lg);                                 
     border-top-color: var(--highlight-color);
 }
 

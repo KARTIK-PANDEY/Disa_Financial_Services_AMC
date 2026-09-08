@@ -417,3 +417,47 @@
 [data-theme='dark'] .chatbot-input:focus {
     box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.15);
 }
+/* Gemini badge */
+.powered-by {
+  display: block;
+  font-size: 11px;
+  color: #d7ebff;
+  margin-top: 2px;
+}
+
+/* Suggestion buttons */
+.chat-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 15px;
+}
+
+.suggestion-btn {
+  background: #eef5ff;
+  color: #0b63ce;
+  border: 1px solid #d5e5ff;
+  border-radius: 18px;
+  padding: 7px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.suggestion-btn:hover {
+  background: #0b63ce;
+  color: #fff;
+}
+
+/* Better message formatting */
+.message-line {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+.message-time {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  opacity: 0.6;
+}

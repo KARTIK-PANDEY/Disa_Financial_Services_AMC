@@ -173,3 +173,82 @@
         padding: 1.5rem;
     }
 }
+.sip-ai-btn{
+  width:100%;
+  margin-top:18px;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,#0b63ce,#16a34a);
+  color:white;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.sip-ai-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(11,99,206,.25);
+}
+
+.sip-ai-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* AI Explanation Card */
+
+.ai-explanation-card {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 16px;
+    background: #f8fbff;
+    border-left: 5px solid #16a34a;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
+
+.ai-explanation-card h3 {
+    color: #0b63ce;
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+.ai-explanation-card p {
+    margin: 8px 0;
+    line-height: 1.7;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Calculator result card */
+.calculator-results {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;          /* space between result items and buttons */
+}
+
+/* AI Button */
+.sip-ai-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0b63ce, #16a34a);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sip-ai-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(11, 99, 206, 0.25);
+}
+
+.sip-ai-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
