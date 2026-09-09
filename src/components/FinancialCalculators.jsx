@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./FinancialCalculators.css";
 import { investmentService } from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import {
   LineChart,
   Line,
@@ -58,6 +60,8 @@ const FinancialCalculators = () => {
   const [aiExplanation, setAiExplanation] = useState("");
   const [loadingAI, setLoadingAI] = useState(false);
   const [showAIExplanation, setShowAIExplanation] = useState(false);
+
+  const pdfRef = useRef(null);
 
   const { user } = useAuth();
 
@@ -334,6 +338,110 @@ const FinancialCalculators = () => {
       corpus: Math.round(corpus),
     };
   });
+  const handleDownloadPDF = async () => {
+  const pdf = new jsPDF("p", "mm", "a4");
+
+  // Header
+  pdf.setFillColor(13, 71, 161);
+  pdf.rect(0, 0, 210, 22, "F");
+
+  pdf.setTextColor(255, 255, 255);
+  pdf.setFont("helvetica", "bold");
+  pdf.setFontSize(18);
+  pdf.text("DISA Financial Services Pvt. Ltd.", 12, 14);
+
+  pdf.setFontSize(10);
+  pdf.text("SIP Investment Report", 150, 14);
+
+  // Date
+  pdf.setTextColor(90);
+  pdf.setFont("helvetica", "normal");
+  pdf.text(
+    `Date: ${new Date().toLocaleDateString("en-IN")}`,
+    12,
+    30
+  );
+
+  // Summary Box
+  pdf.setDrawColor(220);
+  pdf.roundedRect(10, 35, 190, 50, 3, 3);
+
+  pdf.setFont("helvetica", "bold");
+  pdf.setTextColor(13, 71, 161);
+  pdf.setFontSize(13);
+  pdf.text("Investment Summary", 15, 43);
+
+  pdf.setFont("helvetica", "normal");
+  pdf.setTextColor(40);
+  pdf.setFontSize(10);
+
+  pdf.text(`Monthly SIP: ${formatCurrency(sipAmount)}`, 15, 52);
+  pdf.text(`Expected Return: ${sipRate}%`, 110, 52);
+
+  pdf.text(`Investment Period: ${sipYears} Years`, 15, 60);
+  pdf.text(`Invested Amount: ${formatCurrency(result.invested)}`, 110, 60);
+
+  pdf.text(`Estimated Returns: ${formatCurrency(result.returns)}`, 15, 68);
+
+  pdf.setFont("helvetica", "bold");
+  pdf.setTextColor(217, 119, 6);
+  pdf.setFontSize(14);
+  pdf.text(`Total Corpus: ${formatCurrency(result.total)}`, 15, 78);
+
+  // Capture only chart
+  const chart = document.querySelector(".growth-chart-card");
+
+  if (chart) {
+    const canvas = await html2canvas(chart, {
+      scale: 2,
+      backgroundColor: "#ffffff",
+    });
+
+    const img = canvas.toDataURL("image/png");
+
+    pdf.addImage(img, "PNG", 15, 92, 180, 70);
+  }
+
+  // AI Insights (only first 4 lines)
+  if (aiExplanation) {
+    pdf.setFont("helvetica", "bold");
+    pdf.setTextColor(5, 150, 105);
+    pdf.setFontSize(12);
+    pdf.text("DISA AI Investment Insights", 15, 172);
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setTextColor(50);
+    pdf.setFontSize(9);
+
+    const summary = aiExplanation
+      .split("\n")
+      .filter(line => line.trim())
+      .slice(0, 4);
+
+    let y = 180;
+    summary.forEach(line => {
+      pdf.text(`• ${line.replace(/[#*]/g, "")}`, 18, y, {
+        maxWidth: 175,
+      });
+      y += 8;
+    });
+  }
+
+  // Footer
+  pdf.setDrawColor(230);
+  pdf.line(10, 280, 200, 280);
+
+  pdf.setFontSize(8);
+  pdf.setTextColor(120);
+  pdf.text(
+    "Disclaimer: Mutual Fund investments are subject to market risks. Please read all scheme related documents carefully before investing.",
+    10,
+    286,
+    { maxWidth: 190 }
+  );
+
+  pdf.save("DISA_SIP_Report.pdf");
+};
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat("en-IN", {
@@ -449,9 +557,16 @@ const FinancialCalculators = () => {
                       ? "Generating AI Explanation..."
                       : "✨ Explain with DISA AI"}
                   </button>
-                </div>
+                
+                <button
+  className="download-pdf-btn"
+  onClick={handleDownloadPDF}
+>
+  📄 Download SIP Report
+</button>
+</div>
 
-                <div className="calculator-results">
+                <div className="calculator-results" ref={pdfRef}>
                   <ResultCard result={result} label="Total Corpus"></ResultCard>
                 </div>
               </div>

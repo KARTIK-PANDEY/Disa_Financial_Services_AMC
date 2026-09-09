@@ -1,130 +1,182 @@
-/* src/components/Hero.css */
+/* ==========================
+   DISA HERO SECTION
+========================== */
+
 .hero {
-    height: 90vh;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    display: flex;
-    align-items: center;
-    color: var(--text-inverse);
-    /* Always light text on dark overlay */
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
+/* Dark overlay for readability */
 .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Gradient using brand colors */
-    background: linear-gradient(to right,
-            rgba(13, 27, 42, 0.95) 0%,
-            rgba(13, 27, 42, 0.7) 50%,
-            rgba(13, 27, 42, 0.3) 100%);
-    z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 18, 43, 0.9) 0%,
+    rgba(4, 36, 84, 0.75) 45%,
+    rgba(4, 36, 84, 0.2) 100%
+  );
 }
 
+/* Main content */
 .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  color: #fff;
+  padding: 60px 0;
 }
 
+/* Badge */
+.hero-badge {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 193, 7, 0.6);
+  background: rgba(255, 193, 7, 0.12);
+  color: #ffc72c;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+
+/* Heading */
 .hero-title {
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
-    color: var(--text-inverse);
-    animation: fadeInUp 1s ease-out;
+  font-size: 70px;
+  line-height: 1.05;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: #ffffff;
 }
 
 .text-highlight {
-    color: var(--highlight-color);
+  color: #f59e0b;
 }
 
+/* Subtitle */
 .hero-subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 2.5rem;
-    max-width: 600px;
-    color: #e0e0e0;
-    /* Explicit light gray for readability */
-    animation: fadeInUp 1s ease-out 0.3s forwards;
-    opacity: 0;
+  font-size: 20px;
+  line-height: 1.8;
+  color: #e8edf6;
+  margin-bottom: 38px;
 }
 
+/* Buttons */
 .hero-btns {
-    display: flex;
-    gap: 1.5rem;
-    animation: fadeInUp 1s ease-out 0.6s forwards;
-    opacity: 0;
+  display: flex;
+  gap: 18px;
+  margin-bottom: 55px;
+  flex-wrap: wrap;
 }
 
-.hero-btns .btn {
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
+.btn {
+  text-decoration: none;
+  padding: 16px 34px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.3s ease;
 }
 
-.hero-btns .btn-outline {
-    border-color: var(--text-inverse);
-    color: var(--text-inverse);
+/* Gold Button */
+.btn-primary {
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+  color: white;
+  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
 }
 
-.hero-btns .btn-outline:hover {
-    background-color: var(--text-inverse);
-    color: var(--brand-primary);
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(245, 158, 11, 0.45);
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
+/* White Outline Button */
+.btn-outline {
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: white;
+  background: transparent;
+}
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.btn-outline:hover {
+  background: white;
+  color: #0a2a66;
+}
+
+/* Stats */
+.hero-stats {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.stat-item h3 {
+  color: #ffc72c;
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.stat-item p {
+  color: #d7e3f6;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 54px;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
+  .hero {
+    min-height: auto;
+    padding: 80px 0 60px;
+    background-position: center right;
+  }
 
-    .hero {
-        height: auto;
-        padding: 6rem 0;
-        background-position: right center;
-    }
+  .hero-content {
+    max-width: 100%;
+    padding: 20px;
+  }
 
-    .hero-overlay {
-        background: rgba(13, 27, 42, 0.85);
-    }
+  .hero-title {
+    font-size: 42px;
+  }
 
-    .hero-btns {
-        flex-direction: column;
-        width: 100%;
-    }
+  .hero-subtitle {
+    font-size: 16px;
+    line-height: 1.7;
+  }
 
-    .hero-btns .btn {
-        width: 100%;
-        text-align: center;
-    }
-}
+  .hero-btns {
+    flex-direction: column;
+  }
 
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
-    }
+  .btn {
+    text-align: center;
+    width: 100%;
+  }
 
-    .hero-subtitle {
-        font-size: 1rem;
-    }
+  .hero-stats {
+    gap: 25px;
+  }
 
-    .hero-btns {
-        gap: 1rem;
-    }
+  .stat-item h3 {
+    font-size: 24px;
+  }
 }
