@@ -68,7 +68,7 @@ Disa_Financial_Services_Website/
 
 ## 🚀 Getting Started
 
-Follow these steps to set up the full-stack project locally.
+Follow these steps to set up the full-stack project locally and Run the Application.
 
 ### Prerequisites
 
