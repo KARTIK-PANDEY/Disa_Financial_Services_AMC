@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^2.0.0",
     "axios": "^1.13.4",
     "html2canvas": "^1.4.1",
     "jspdf": "^4.2.1",
