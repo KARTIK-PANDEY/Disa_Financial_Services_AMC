@@ -49,9 +49,7 @@ const Contact = () => {
                             <i className="fas fa-map-marker-alt" style={{ fontStyle: 'normal' }}>📍</i>
                             <div>
                                 <h4>Head Office</h4>
-                                <p>C-21, DISA SHARES AND DERIVATIVES PRIVATE LIMITED,
-JEEVAN BIMA MARG, SHYAM MARKET, PANDRI, RAIPUR,
-Raipur, Chhattisgarh, 492001</p>
+                                <p>C-21, DISA SHARES AND DERIVATIVES PRIVATE LIMITED, JEEVAN BIMA MARG, SHYAM MARKET, PANDRI, RAIPUR, Raipur, Chhattisgarh, 492001</p>
                             </div>
                         </div>
                         <div className="info-item">
