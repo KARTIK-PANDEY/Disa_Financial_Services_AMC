@@ -46,12 +46,12 @@ const Hero = () => {
         {/* Stats */}
         <div className="hero-stats">
           <div className="stat-item">
-            <h3>500+</h3>
+            <h3>5000+</h3>
             <p>Happy Investors</p>
           </div>
 
           <div className="stat-item">
-            <h3>15+</h3>
+            <h3>25+</h3>
             <p>Years Experience</p>
           </div>
 
