@@ -147,7 +147,7 @@ export const findAnswer = async (query) => {
     }
 
     try {
-        const apiKey = "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"; 
+        const apiKey = "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"; 
 
         // Combine all answers from the knowledge base into a single context string
         const kbContext = knowledgeBase
